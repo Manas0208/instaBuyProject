@@ -111,7 +111,7 @@ function EditModal({ order, onSave, onCancel }) {
 function OrderCard({ order, role, onCancel, onStatusUpdate, onEditOpen, onRefund, index }) {
   const [open, setOpen] = useState(false);
   const [newStatus, setNewStatus] = useState(order.orderStatus || "CREATED");
-  const [confirm, setConfirm] = useState(null);
+ 
 
   const items = order.items || [];
   const isCancelled = order.orderStatus?.toUpperCase() === "CANCELLED";
@@ -201,7 +201,7 @@ function OrderCard({ order, role, onCancel, onStatusUpdate, onEditOpen, onRefund
       <div className={`ord-card__body ${open ? "ord-card__body--open" : ""}`}>
 
         {/* Items list */}
-        {items.length > 0 && (
+                {items.length >= 0 && (
           <>
             <div className="ord-items-title">Items in this order</div>
             {items.map((item, i) => (

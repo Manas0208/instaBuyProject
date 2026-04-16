@@ -11,3 +11,14 @@ export const inventoryAPI = axios.create({
 export const orderAPI = axios.create({
   baseURL: "http://localhost:8084",
 });
+
+
+userAPI.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
